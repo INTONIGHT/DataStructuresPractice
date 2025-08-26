@@ -94,4 +94,27 @@ public class BinarySearchTree {
 		}
 		return root.data;
 	}
+	
+	public void inOrderTraverseTree(BinaryTreeNode root) {
+		//left root right
+		//
+		inOrderTraverseTree(root.left);
+		System.out.println(root.data);
+		inOrderTraverseTree(root.right);
+	}
+	public void postOrderTraversal(BinaryTreeNode root) {
+		//left right root
+		//userd to delete a tree from leaf to root
+		postOrderTraversal(root.left);
+		postOrderTraversal(root.right);
+		System.out.println(root.data);
+	}
+	
+	public void preOrderTraversal(BinaryTreeNode root) {
+		//root left right 
+		//used to create a copy of a tree
+		System.out.println(root.data);
+		preOrderTraversal(root.left);
+		preOrderTraversal(root.right);
+	}
 }
