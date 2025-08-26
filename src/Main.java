@@ -60,6 +60,19 @@ public class Main {
 		//depth first search pick a route keep going
 		//graph.depthFirstSearch(4);
 		graph.breadthFirstSearch(4);
+		System.out.println(" ");
+		BinarySearchTree tree = new BinarySearchTree();
+		tree.insert(new BinaryTreeNode(3));
+		tree.insert(new BinaryTreeNode(5));
+		tree.insert(new BinaryTreeNode(7));
+		tree.insert(new BinaryTreeNode(4));
+		tree.insert(new BinaryTreeNode(8));
+		tree.insert(new BinaryTreeNode(9));
+		tree.insert(new BinaryTreeNode(10));
+		tree.insert(new BinaryTreeNode(2));
+		tree.insert(new BinaryTreeNode(1));
+		tree.insert(new BinaryTreeNode(6));
+		tree.display();
 	}
 
 	private static void quickSort(int[] array, int start, int end) {
