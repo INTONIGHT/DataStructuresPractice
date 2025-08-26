@@ -73,6 +73,10 @@ public class Main {
 		tree.insert(new BinaryTreeNode(1));
 		tree.insert(new BinaryTreeNode(6));
 		tree.display();
+		System.out.println(tree.search(11));
+		tree.remove(10);
+		System.out.println("");
+		tree.display();
 	}
 
 	private static void quickSort(int[] array, int start, int end) {

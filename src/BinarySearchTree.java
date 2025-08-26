@@ -24,29 +24,74 @@ public class BinarySearchTree {
 	private void displayHelper(BinaryTreeNode root) {
 		if(root != null) {
 			//in order traversal
+			//can change to right then left for decreasing order
 			displayHelper(root.left);
 			System.out.println(root.data);
 			displayHelper(root.right);
 		}
 	}
 	public boolean search(int data) {
-		return false;
+		return searchHelper(root,data);
 	}
 	private boolean searchHelper(BinaryTreeNode root, int data) {
-		return false;
+		if(root == null) {
+			return false;
+		}else if(root.data == data) {
+			return true;
+		}else if(root.data > data) {
+			return searchHelper(root.left,data);
+		}else {
+			return searchHelper(root.right,data);
+		}
 	}
 	
 	public void remove(int data) {
-		
+		if(search(data)) {
+			removeHelper(root,data);
+		}else {
+			System.out.println(data + " could not be found");
+		}
 	}
 	private BinaryTreeNode removeHelper(BinaryTreeNode root, int data) {
-		return null;
+		if(root == null) {
+			return root;
+		}else if(data < root.data) {
+			root.left = removeHelper(root.left,data);
+		}else if(data > root.data) {
+			root.right = removeHelper(root.right,data);
+		}else {
+			//found the node
+			if(root.left == null && root.right == null) {//if its a leaf node
+				root = null;
+			}
+			else if(root.right != null) {
+				//right child find a successor to replace this node
+				root.data = successor(root);
+				root.right = removeHelper(root.right,root.data);
+			}else {
+				//find a predecessor to replace thios node
+				//left child
+				root.data = predecessor(root);
+				root.left = removeHelper(root.left,root.data);
+			}
+		}
+		return root;
 	}
 	
 	private int successor(BinaryTreeNode root) {
-		return -1;
+		//find the least value below the right child of this root node
+		root = root.right;
+		while(root.left != null) {
+			root = root.left;
+		}
+		return root.data;
 	}
 	private int predecessor(BinaryTreeNode root) {
-		return -1;
+		//find the greatest value below the left child
+		root = root.left;
+		while(root.right != null) {
+			root = root.right;
+		}
+		return root.data;
 	}
 }
