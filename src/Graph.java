@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Graph {
 	
@@ -38,6 +40,45 @@ public class Graph {
 				System.out.print(matrix[i][j] + " ");
 			}
 			System.out.println();
+		}
+	}
+	
+	public void depthFirstSearch(int src) {
+		boolean[] visited = new boolean[matrix.length];
+		dFSHelper(src,visited);
+	}
+
+	private void dFSHelper(int src, boolean[] visited) {
+		// TODO Auto-generated method stub
+		if(visited[src]) {
+			return;
+		}
+		else {
+			visited[src] = true;
+			System.out.println(nodes.get(src).data + " = visited");
+		}
+		for(int i =0;i<matrix[src].length;i++) {
+			if(matrix[src][i] == 1) {
+				dFSHelper(i,visited);
+			}
+		}
+		return;
+	}
+	
+	public void breadthFirstSearch(int src) {
+		Queue<Integer> indices = new LinkedList<>();
+		boolean[] visited = new boolean[matrix.length];
+		indices.offer(src);
+		visited[src] = true;
+		while(indices.size() != 0) {
+			src = indices.poll();
+			System.out.println(nodes.get(src).data + " = visited");
+			for(int i = 0; i<matrix[src].length;i++) {
+				if(matrix[src][i] == 1 && !visited[i]) {
+					indices.offer(i);
+					visited[i] = true;
+				}
+			}
 		}
 	}
 }

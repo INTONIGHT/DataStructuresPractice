@@ -57,6 +57,9 @@ public class Main {
 		graph.addEdge(4, 2);
 		
 		graph.print();
+		//depth first search pick a route keep going
+		//graph.depthFirstSearch(4);
+		graph.breadthFirstSearch(4);
 	}
 
 	private static void quickSort(int[] array, int start, int end) {
